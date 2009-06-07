@@ -1,0 +1,5 @@
+                                   btpd-cgi
+
+
+This is an attempt to create a fast web interface for the BitTorrent Protocol
+Daemon, using the C language and the CGI interface.
