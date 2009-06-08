@@ -1,0 +1,3 @@
+[submodule "btpd"]
+	path = btpd
+	url = http://www.murmeldjur.se/btpd/btpd.git
