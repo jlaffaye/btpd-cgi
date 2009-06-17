@@ -22,6 +22,9 @@
 #include "queue.h"
 
 #define CONFFILE ETCDIR"/btpdcgi.conf"
+#define TPLDIR SHAREDIR"/btpdcgi/templates"
+#define TPLLIST TPLDIR"/list.cs"
+#define TPLADD TPLDIR"/add.cs"
 
 extern const char *btpd_dir;
 extern struct ipc *ipc;
