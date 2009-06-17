@@ -4,7 +4,7 @@
 include config.mk
 
 CC=	gcc
-CFLAGS=	-Wall -pipe -std=c99 -fPIC ${INCLUDE}
+CFLAGS=	-Wall -pipe -std=c99 -fPIC ${INCLUDE} -DETCDIR=\"${ETCDIR}\"
 LDFLAGS=${LIBDIR} -L./btpd/misc
 LIBS=	-lneo_cgi -lneo_cs -lneo_utl -lz -lmisc -lm -lcrypto
 INCLUDE=${INCDIR} ${INCCSDIR} -I./btpd/misc

@@ -21,6 +21,8 @@
 #include "iobuf.h"
 #include "queue.h"
 
+#define CONFFILE ETCDIR"/btpdcgi.conf"
+
 extern const char *btpd_dir;
 extern struct ipc *ipc;
 

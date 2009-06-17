@@ -22,8 +22,10 @@ main()
 	CGI *cgi;
 
 	cgi_init(&cgi, NULL);
+	hdf_read_file(cgi->hdf, CONFFILE);
 	cmd = hdf_get_value(cgi->hdf, "Query.cmd", "list");
 
+	btpd_dir = hdf_get_value(cgi->hdf, "btpd_dir", NULL);
 	if(btpd_dir == NULL)
 		if((btpd_dir = find_btpd_dir()) == NULL)
 			diemsg("cannot find the btpd directory.\n");
