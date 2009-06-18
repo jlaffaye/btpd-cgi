@@ -4,7 +4,7 @@
 
 <?cs include:"header.cs" ?>
 <div class="torrent">
-<?cs each:torrent = Torrents ?>
+<?cs each:torrent = torrents ?>
 	<table cellspacing="0">
 		<tr>
 			<td class="title"><?cs var:torrent.name ?></td>
@@ -46,6 +46,6 @@
 			</td>
 		</tr>
 	</table>
-	<?cs /each ?>
+<?cs /each ?>
 </div>
 <?cs include:"templates/footer.cs" ?>

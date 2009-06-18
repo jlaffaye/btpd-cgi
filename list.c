@@ -14,7 +14,7 @@ list_cb(int obji, enum ipc_err objerr, struct ipc_get_res *res, void *arg)
 		diemsg("list_cb failed (%s).\n", ipc_strerror(objerr));
 
 	/* Get an HDF node for the current torrent */
-	asprintf(&buf, "Torrents.%i", (unsigned)res[IPC_TVAL_NUM].v.num);
+	asprintf(&buf, "torrents.%i", (unsigned)res[IPC_TVAL_NUM].v.num);
 	hdf_get_node(cgi->hdf, buf, &node);
 	free(buf);
 
@@ -78,6 +78,6 @@ cmd_list(CGI *cgi)
 	code = btpd_tget_wc(ipc, IPC_TWC_ALL, keys, nkeys, list_cb, cgi);
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
-hdf_write_file(cgi->hdf, "debug");
+
 	cgi_display(cgi, "list.cs");
 }
