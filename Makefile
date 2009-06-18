@@ -42,6 +42,7 @@ install:
 	@cp ${EXEC} ${BINDIR}
 	@mkdir ${SHAREDIR}/btpdcgi
 	@cp -R templates ${SHAREDIR}/btpdcgi
+	@cp -R static ${SHAREDIR}/btpdcgi
 
 deinstall:
 	@echo "DEINSTALL	${EXEC}"
