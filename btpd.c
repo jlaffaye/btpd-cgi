@@ -37,31 +37,31 @@ handle_ipc_res(enum ipc_err code, const char *cmd, const char *target)
 void
 get_percent(long long part, long long whole, char **res)
 {
-	asprintf(res, "%5.1f%% ", floor(1000.0 * part / whole) / 10);
+	asprintf(res, "%.1f%%", floor(1000.0 * part / whole) / 10);
 }
 
 void
 get_rate(long long rate, char **res)
 {
 	if (rate >= 999.995 * (1 << 10))
-		asprintf(res, "%6.2fMB/s ", (double)rate / (1 << 20));
+		asprintf(res, "%.2fMB/s", (double)rate / (1 << 20));
 	else
-		asprintf(res, "%6.2fkB/s ", (double)rate / (1 << 10));
+		asprintf(res, "%.2fkB/s", (double)rate / (1 << 10));
 }
 
 void
 get_size(long long size, char **res)
 {
 	if(size >= 999.995 * (1 << 20))
-		asprintf(res, "%6.2fG ", (double)size / (1 << 30));
+		asprintf(res, "%.2fGB", (double)size / (1 << 30));
 	else
-		asprintf(res, "%6.2fM ", (double)size / (1 << 20));
+		asprintf(res, "%.2fMB", (double)size / (1 << 20));
 }
 
 void
 get_ratio(long long part, long long whole, char **res)
 {
-	asprintf(res, "%7.2f ", (double)part / whole);
+	asprintf(res, "%.2f", (double)part / whole);
 }
 
 char*
