@@ -41,7 +41,6 @@ void get_percent(long long part, long long whole, char **res);
 void cmd_add(CGI *cgi);
 void cmd_del(CGI *cgi);
 void cmd_list(CGI *cgi);
-void cmd_stat(CGI *cgi);
 void cmd_kill(CGI *cgi);
 void cmd_start(CGI *cgi);
 void cmd_stop(CGI *cgi);

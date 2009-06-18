@@ -18,7 +18,6 @@ SRC=	btpd.c \
 	kill.c \
 	list.c \
 	start.c \
-	stat.c \
 	stop.c
 all: ${EXEC}
 

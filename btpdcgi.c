@@ -10,7 +10,6 @@ static struct {
 	{ "list", cmd_list },
 	{ "start", cmd_start },
 	{ "stop", cmd_stop },
-	{ "stat", cmd_stat }
 };
 
 int ncmds = sizeof(cmd_table) / sizeof(cmd_table[0]);
