@@ -30,13 +30,13 @@ extern struct ipc *ipc;
 void diemsg(const char *fmt, ...);
 void btpd_connect(void);
 enum ipc_err handle_ipc_res(enum ipc_err err, const char *cmd, const char *target);
-char tstate_char(enum ipc_tstate ts);
+char* tstate_str(enum ipc_tstate ts);
 int torrent_spec(char *arg, struct ipc_torrent *tp);
 
-void print_rate(long long rate);
-void print_size(long long size);
-void print_ratio(long long part, long long whole);
-void print_percent(long long part, long long whole);
+void get_rate(long long rate, char **res);
+void get_size(long long size, char **res);
+void get_ratio(long long part, long long whole, char **res);
+void get_percent(long long part, long long whole, char **res);
 
 void cmd_add(CGI *cgi);
 void cmd_del(CGI *cgi);

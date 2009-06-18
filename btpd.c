@@ -35,50 +35,52 @@ handle_ipc_res(enum ipc_err code, const char *cmd, const char *target)
 }
 
 void
-print_percent(long long part, long long whole)
+get_percent(long long part, long long whole, char **res)
 {
-	printf("%5.1f%% ", floor(1000.0 * part / whole) / 10);
+	asprintf(res, "%5.1f%% ", floor(1000.0 * part / whole) / 10);
 }
 
 void
-print_rate(long long rate)
+get_rate(long long rate, char **res)
 {
 	if (rate >= 999.995 * (1 << 10))
-		printf("%6.2fMB/s ", (double)rate / (1 << 20));
+		asprintf(res, "%6.2fMB/s ", (double)rate / (1 << 20));
 	else
-		printf("%6.2fkB/s ", (double)rate / (1 << 10));
+		asprintf(res, "%6.2fkB/s ", (double)rate / (1 << 10));
 }
 
 void
-print_size(long long size)
+get_size(long long size, char **res)
 {
 	if(size >= 999.995 * (1 << 20))
-		printf("%6.2fG ", (double)size / (1 << 30));
+		asprintf(res, "%6.2fG ", (double)size / (1 << 30));
 	else
-		printf("%6.2fM ", (double)size / (1 << 20));
-}
-void
-print_ratio(long long part, long long whole)
-{
-	printf("%7.2f ", (double)part / whole);
+		asprintf(res, "%6.2fM ", (double)size / (1 << 20));
 }
 
-char
-tstate_char(enum ipc_tstate ts)
+void
+get_ratio(long long part, long long whole, char **res)
 {
-    switch (ts) {
-    case IPC_TSTATE_INACTIVE:
-        return 'I';
-    case IPC_TSTATE_START:
-        return '+';
-    case IPC_TSTATE_STOP:
-        return '-';
-    case IPC_TSTATE_LEECH:
-        return 'L';
-    case IPC_TSTATE_SEED:
-        return 'S';
-    }
-    diemsg("unrecognized torrent state.\n");
+	asprintf(res, "%7.2f ", (double)part / whole);
+}
+
+char*
+tstate_str(enum ipc_tstate ts)
+{
+	switch (ts) {
+	case IPC_TSTATE_INACTIVE:
+		return "inactive";
+	case IPC_TSTATE_START:
+		return "start";
+	case IPC_TSTATE_STOP:
+		return "stop";
+	case IPC_TSTATE_LEECH:
+		return "leech";
+	case IPC_TSTATE_SEED:
+		return "seed";
+	}
+	return "n/a";
+	diemsg("unrecognized torrent state.\n");
 }
 
 int
