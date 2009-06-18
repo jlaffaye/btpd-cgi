@@ -37,6 +37,12 @@
 			<?cs if:torrent.st == "seed" ?>
 				Seeding to <?cs var:torrent.peers ?> - Up: <?cs var:torrent.rate_up ?> - Ratio: <?cs var:torrent.ratio ?>
 			<?cs /if ?>
+			<?cs if:torrent.st == "start" ?>
+				Starting...
+			<?cs /if ?>
+			<?cs if:torrent.st == "stop" ?>
+				Stoping...
+			<?cs /if ?>
 			</td>
 		</tr>
 	</table>
