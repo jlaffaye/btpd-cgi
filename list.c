@@ -20,13 +20,26 @@ list_cb(int obji, enum ipc_err objerr, struct ipc_get_res *res, void *arg)
 
 	/* Fill it */
 	hdf_set_int_value(node, "num", (unsigned)res[IPC_TVAL_NUM].v.num);
+	hdf_set_int_value(node, "peers", res[IPC_TVAL_PCOUNT].v.num);
 	hdf_set_value(node, "st", tstate_str(res[IPC_TVAL_STATE].v.num));
 
 	get_size(res[IPC_TVAL_CSIZE].v.num, &buf);
 	HDF_SET_BUF("size");
 
+	get_size(res[IPC_TVAL_CGOT].v.num, &buf);
+	HDF_SET_BUF("downloaded_size");
+
 	get_percent(res[IPC_TVAL_CGOT].v.num, res[IPC_TVAL_CSIZE].v.num, &buf);
 	HDF_SET_BUF("percent");
+
+	get_rate(res[IPC_TVAL_RATEDWN].v.num, &buf);
+	HDF_SET_BUF("rate_down");
+
+	get_rate(res[IPC_TVAL_RATEUP].v.num, &buf);
+	HDF_SET_BUF("rate_up");
+
+	get_percent(res[IPC_TVAL_PCSEEN].v.num, res[IPC_TVAL_PCCOUNT].v.num, &buf);
+	HDF_SET_BUF("available");
 
 	get_ratio(res[IPC_TVAL_TOTUP].v.num, res[IPC_TVAL_CSIZE].v.num, &buf);
 	HDF_SET_BUF("ratio");
