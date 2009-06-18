@@ -40,9 +40,11 @@ clean:
 install:
 	@echo "INSTALL	${EXEC}"
 	@chmod 755 ${EXEC}
-	@chown root:wheel ${EXEC}
 	@cp ${EXEC} ${BINDIR}
+	@mkdir ${SHAREDIR}/btpdcgi
+	@cp -R templates ${SHAREDIR}/btpdcgi
 
 deinstall:
 	@echo "DEINSTALL	${EXEC}"
-	@rm -f ${BINDIR}${EXEC}
+	@rm -f ${BINDIR}/${EXEC}
+	@rm -rf ${SHAREDIR}/btpdcgi
