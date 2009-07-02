@@ -2,15 +2,11 @@
 #define BTPDCGI_H
 
 #include <errno.h>
-#include <getopt.h>
 #include <inttypes.h>
-#include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <strings.h>
-#include <unistd.h>
 
 #include "ClearSilver.h"
 
@@ -19,7 +15,6 @@
 #include "subr.h"
 #include "benc.h"
 #include "iobuf.h"
-#include "queue.h"
 
 #define CONFFILE ETCDIR"/btpdcgi.conf"
 #define TPLDIR SHAREDIR"/btpdcgi/templates"
