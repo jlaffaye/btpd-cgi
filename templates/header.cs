@@ -3,6 +3,9 @@
 <head>
 <title>BTPDcgi - <?cs alt:Query.cmd ?>list<?cs /alt ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?cs if:Query.cmd == "list" ?>
+	<meta http-equiv="refresh" content="<?cs alt:refresh_interval ?>15<?cs /alt ?>" />
+<?cs /if ?>
 <link href="./style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

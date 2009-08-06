@@ -48,4 +48,4 @@
 	</table>
 <?cs /each ?>
 </div>
-<?cs include:"templates/footer.cs" ?>
+<?cs include:"footer.cs" ?>

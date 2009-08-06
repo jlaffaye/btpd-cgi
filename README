@@ -26,7 +26,7 @@ Daemon, using the C language and the CGI interface.
 
 3. Configuration
   The btpdcgi configuration file is located in ${PREFIX}/etc/btpdcgi.conf
-  The mandatories options are:
+  The mandatories options are :
 
     * btpd_dir : path to the directory where the btpd socket live (the socket
       must be read/writable by the btpdcgi user)
@@ -36,6 +36,10 @@ Daemon, using the C language and the CGI interface.
 
     * content_dir : path to the directory where the downloaded files are saved
       (must by writable by the btpd user)
+
+  Additionaly you can set :
+
+  * refresh_interval (default=15) : time in seconds between refresh (list page)
 
   Usually, the btpdcgi user is the same as httpd, say www.
   It is recommanded that btpd run with its own user.
