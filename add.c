@@ -38,11 +38,14 @@ void cmd_add(CGI *cgi)
 	char *dir = NULL, *name = NULL, *tdir = NULL;
 	FILE *tf;
 	char *torrent = NULL;
+	NEOERR *err;
 
 	/* Check if the form has been submited */
 	cgi_parse(cgi);
 	if(hdf_get_value(cgi->hdf, "Query.submited", NULL) == NULL) {
-		cgi_display(cgi, "add.cs");
+		if((err = cgi_display(cgi, "add.cs"))) {
+			cgi_neo_error(cgi, err);
+		}
 		return;
 	}
 
@@ -95,6 +98,8 @@ void cmd_add(CGI *cgi)
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
 
-	cgi_display(cgi, "add.cs");
+	if((err = cgi_display(cgi, "add.cs"))) {
+		cgi_neo_error(cgi, err);
+	}
 	return;
 }

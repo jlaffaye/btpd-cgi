@@ -73,11 +73,14 @@ cmd_list(CGI *cgi)
 {
 	enum ipc_err code;
 	size_t nkeys = sizeof(keys) / sizeof(keys[0]);
+	NEOERR *err;
 
 	btpd_connect();
 	code = btpd_tget_wc(ipc, IPC_TWC_ALL, keys, nkeys, list_cb, cgi);
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
 
-	cgi_display(cgi, "list.cs");
+	if((err = cgi_display(cgi, "list.cs"))) {
+		cgi_neo_error(cgi, err);
+	}
 }
