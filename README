@@ -3,3 +3,46 @@
 
 This is an attempt to create a fast web interface for the BitTorrent Protocol
 Daemon, using the C language and the CGI interface.
+
+1. Dependencies
+  * ClearSilver
+  * libz
+  * btpd sources in the btpd/ directory with its Makefile generated
+  * libm
+  * libcrypto (OpenSSL)
+
+2. Build and install
+  First, ensure that you have all dependencies as described in 1.
+
+  To get the btpd sources you can :
+    * use git submodules if you have clone the btpdcgi repository
+    * download the latest tarball from the btpd website and extract it
+
+  The build is configured by the config.mk file. You can edit it to fit your
+  system or leave defaults. Then, it is the same old machinery:
+
+  $ make
+  $ make install
+
+3. Configuration
+  The btpdcgi configuration file is located in ${PREFIX}/etc/btpdcgi.conf
+  The mandatories options are:
+
+    * btpd_dir : path to the directory where the btpd socket live (the socket
+      must be read/writable by the btpdcgi user)
+
+    * torrents_dir : path to the directory where the .torrent files are saved
+      (must be writable by the btpdcgi user)
+
+    * content_dir : path to the directory where the downloaded files are saved
+      (must by writable by the btpd user)
+
+  Usually, the btpdcgi user is the same as httpd, say www.
+  It is recommanded that btpd run with its own user.
+
+  To restrict your btpdcgi installation, you can configure a HTTP authentication
+  with your httpd server.
+
+  The btpd.cgi file is located in ${PREFIX}/bin/ and the style.css file in
+  ${PREFIX}/share/btpdcgi/static. You might want to add aliases rules so that
+  your httpd can serve them.

@@ -1,0 +1,3 @@
+btpd_dir=/home/user/.btpd
+torrents_dir=/path/to/the/torrents/files
+content_dir=/path/to/the/downloaded/files
