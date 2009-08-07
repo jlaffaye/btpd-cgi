@@ -7,6 +7,7 @@ void
 diemsg(const char *fmt, ...)
 {
 	va_list ap;
+	printf("Content-Type: text/plain\n\n"); /* Make sure we are out of headers */
 	va_start(ap, fmt);
 	vfprintf(stdout, fmt, ap);
 	va_end(ap);
