@@ -10,6 +10,7 @@ Daemon, using the C language and the CGI interface.
   * btpd sources in the btpd/ directory with its Makefile generated
   * libm
   * libcrypto (OpenSSL)
+  * libfetch (FreeBSD)
 
 2. Build and install
   First, ensure that you have all dependencies as described in 1.

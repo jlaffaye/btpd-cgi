@@ -1,12 +1,14 @@
 #ifndef BTPDCGI_H
 #define BTPDCGI_H
 
+#include <sys/param.h>
 #include <errno.h>
 #include <inttypes.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fetch.h>
 
 #include "ClearSilver.h"
 

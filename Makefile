@@ -6,7 +6,7 @@ include config.mk
 CC=	gcc
 CFLAGS=	-Wall -pipe -std=c99 -fPIC ${INCLUDE} ${DEFINE}
 LDFLAGS=${LIBDIR} -L./btpd/misc
-LIBS=	-lneo_cgi -lneo_cs -lneo_utl -lz -lmisc -lm -lcrypto
+LIBS=	-lneo_cgi -lneo_cs -lneo_utl -lz -lmisc -lm -lcrypto -lfetch
 INCLUDE=${INCDIR} ${INCCSDIR} -I./btpd/misc
 DEFINE=-DETCDIR=\"${ETCDIR}\" -DSHAREDIR=\"${SHAREDIR}\"
 EXEC=	btpd.cgi
