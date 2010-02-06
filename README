@@ -16,14 +16,14 @@ Daemon, using the C language and the CGI interface.
   First, ensure that you have all dependencies as described in 1.
 
   To get the btpd sources you can :
-    * use git submodules if you have clone the btpdcgi repository
+    * use git submodules if you have cloned the btpdcgi repository
     * download the latest tarball from the btpd website and extract it
 
   The build is configured by the config.mk file. You can edit it to fit your
   system or leave defaults. Then, it is the same old machinery:
 
   $ make
-  $ make install
+  # make install
 
 3. Configuration
   The btpdcgi configuration file is located in ${PREFIX}/etc/btpdcgi.conf
