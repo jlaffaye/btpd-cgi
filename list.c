@@ -80,6 +80,9 @@ cmd_list(CGI *cgi)
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
 
+	/* Ensure that the template now that the cmd is "list" */
+	hdf_set_value(cgi->hdf, "Query.cmd", "list");
+
 	if((err = cgi_display(cgi, "list.cs"))) {
 		cgi_neo_error(cgi, err);
 	}
