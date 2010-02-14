@@ -32,9 +32,6 @@ Daemon, using the C language and the CGI interface.
     * btpd_dir : path to the directory where the btpd socket live (the socket
       must be read/writable by the btpdcgi user)
 
-    * torrents_dir : path to the directory where the .torrent files are saved
-      (must be writable by the btpdcgi user)
-
     * content_dir : path to the directory where the downloaded files are saved
       (must by writable by the btpd user)
 

@@ -34,7 +34,7 @@ copy_file(FILE *src, char *path)
 }
 
 int
-fetch_file(char *url, char *tdir, char **tpath)
+fetch_file(char *url, char **tpath)
 {
 	FILE *fremote, *flocal;
 	char *tname, buf[1024];
@@ -43,7 +43,7 @@ fetch_file(char *url, char *tdir, char **tpath)
 	if((tname = strrchr(url, '/')) == NULL) {
 		diemsg("Can not get the file name from the URL '%s'\n", url);
 	}
-	asprintf(tpath, "%s/%s", tdir, ++tname);
+	asprintf(tpath, "/tmp/%s", ++tname);
 
 	/*
 	 * fetch(3) use this environment variable and add its value to the HTTP
@@ -78,7 +78,7 @@ void cmd_add(CGI *cgi)
 {
 	int topdir, start;
 	size_t dirlen = 0;
-	char *cdir, *tdir, *tname, *fname, *torrent;
+	char *cdir, *tname, *fname, *torrent;
 	FILE *tf;
 	NEOERR *err;
 
@@ -93,7 +93,6 @@ void cmd_add(CGI *cgi)
 
 	/* Init */
 	GET_OR_DIE(cdir, "content_dir");
-	GET_OR_DIE(tdir, "torrents_dir");
 	dirlen = strlen(cdir);
 	torrent = NULL;
 
@@ -107,7 +106,7 @@ void cmd_add(CGI *cgi)
 	if(fname != NULL && strcmp(fname, "") != 0) {
 		tf = cgi_filehandle(cgi, "torrent_file");
 		if(tf != NULL) {
-			asprintf(&torrent, "%s/%s", tdir, fname);
+			asprintf(&torrent, "/tmp/%s", fname);
 			copy_file(tf, torrent);
 		} else {
 			diemsg("cgi_filehandle(): fatal error\n");
@@ -117,7 +116,7 @@ void cmd_add(CGI *cgi)
 	/* Fetch the URL file (if any) to torrents_dir */
 	fname = hdf_get_value(cgi->hdf, "Query.torrent_url", NULL);
 	if(fname != NULL && strcmp(fname, "") != 0) {
-		fetch_file(fname, tdir, &torrent);
+		fetch_file(fname, &torrent);
 	}
 
 	/* Check if we have a torrent file */
@@ -156,6 +155,9 @@ void cmd_add(CGI *cgi)
 	}
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
+
+	unlink(torrent);
+	free(torrent);
 
 	cgi_redirect(cgi, "%s", hdf_get_value(cgi->hdf, "CGI.ScriptName", ""));
 	return;

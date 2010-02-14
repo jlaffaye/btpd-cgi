@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fetch.h>
+#include <unistd.h>
 
 #include "ClearSilver.h"
 
