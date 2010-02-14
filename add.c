@@ -157,8 +157,6 @@ void cmd_add(CGI *cgi)
 	if (code != IPC_OK)
 		diemsg("command failed (%s).\n", ipc_strerror(code));
 
-	if((err = cgi_display(cgi, "add.cs"))) {
-		cgi_neo_error(cgi, err);
-	}
+	cgi_redirect(cgi, "%s", hdf_get_value(cgi->hdf, "CGI.ScriptName", ""));
 	return;
 }
