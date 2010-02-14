@@ -12,7 +12,7 @@
 <input type="checkbox" name="start" id="start" value="1" checked="checked" />
 <label for="start">Automatically start the torrent.</label><br />
 
-<input type="checkbox" name="topdir" id="topdir" value="1" />
+<input type="checkbox" name="topdir" id="topdir" value="1" checked="checked" />
 <label for="topdir">Append the torrent top directory (if any) to the content path.</label><br /><br />
 
 <input type="submit" value="Add Torrent" />
